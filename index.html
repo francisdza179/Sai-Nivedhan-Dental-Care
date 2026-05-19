@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Nivedhan Dental Care | Advanced Dentistry in Chennai</title>
+  <meta name="description" content="Top-rated dental clinic in Chennai led by Dr. Akshaya Narayanan, MDS Periodontist & Implantologist. Offering root canals, implants, and periodontal care.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Swiper.js for Premium Carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    /* Services Grid Enhancements */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+    }
+    
+    .service-card {
+      grid-column: span 6;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid #e1e8e1;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      align-items: flex-start; /* Ensures labels don't stretch */
+      gap: 20px;
+    }
+
+    .service-card.featured {
+      grid-column: span 6;
+      background: var(--white); /* Changed from gradient to white for consistency */
+      border: 1px solid #e1e8e1;
+    }
+    
+    .service-card .service-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .service-card .service-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 1.5rem;
+      margin-bottom: 0; /* Gap handles spacing now */
+    }
+
+    /* Standardize label styling across all cards */
+    .service-card .editorial-stat {
+      margin-top: 0;
+      margin-bottom: 0; /* Gap handles spacing now */
+      background: rgba(0, 129, 2, 0.06);
+      padding: 5px 12px;
+      font-weight: 700;
+      color: var(--primary-green);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-green);
+    }
+
+    @media (max-width: 1024px) {
+      .service-card, .service-card.featured { grid-column: span 6; }
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card, .service-card.featured { grid-column: span 1; padding: 32px; }
+    }
+
+    /* Testimonial Section Redesign */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+    
+    .testimonial-card {
+      grid-column: span 4;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 24px;
+      border: 1px solid #e1e8e1;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      height: 100%;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .testimonial-card.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-green);
+    }
+
+    .testimonial-card.featured {
+      grid-column: span 12;
+      background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+      border: 2px solid var(--primary-green);
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-card.wide {
+      grid-column: span 6;
+    }
+
+    .testimonial-card .quote-watermark {
+      position: absolute;
+      font-size: 140px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      color: rgba(0, 129, 2, 0.04);
+      top: -20px;
+      right: 20px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .testimonial-card.featured .quote-watermark {
+      font-size: 180px;
+      right: 40px;
+    }
+
+    /* Animation Delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+
+
+    .testimonial-card.featured .review-text {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0;
+      font-style: normal;
+    }
+
+    .testimonial-card.featured .reviewer-row {
+      border-left: 3px solid var(--primary-green);
+      padding-left: 32px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .testimonial-card .stars-row {
+      margin-bottom: 20px;
+    }
+
+    .testimonial-card .review-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      font-style: normal;
+    }
+
+    .testimonial-card .reviewer-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .testimonial-card .reviewer-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary-green);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .testimonial-card .reviewer-name {
+      font-weight: 700;
+      color: var(--charcoal);
+      font-size: 1.1rem;
+    }
+
+    .testimonial-card .reviewer-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 1024px) {
+      .testimonial-card.featured { grid-template-columns: 1fr; padding: 48px; gap: 40px; }
+      .testimonial-card.featured .reviewer-row { border-left: none; padding-left: 0; align-items: center; text-align: center; }
+      .testimonial-card, .testimonial-card.wide { grid-column: span 6; }
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-grid { gap: 24px; }
+      .testimonial-card, .testimonial-card.featured, .testimonial-card.wide { grid-column: span 12; padding: 32px; }
+      .testimonial-card.featured .review-text { font-size: 1.2rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-container">
+      <div class="top-bar-item text-left">
+        <span>📍 Mogappair-West, Chennai</span>
+      </div>
+      <div class="top-bar-item text-center">
+        <span>⏰ Mon-Sat: 10 AM - 7:30 PM</span>
+      </div>
+      <div class="top-bar-item text-right">
+        <span>📞 08056107507</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo-1.png" alt="Sai Nivedhan Dental Care Logo">
+      </a>
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="treatments.html">Treatments</a>
+        <a href="transformations.html">Transformations</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="hero-badge reveal reveal-down">Specialist Dental Care in Chennai</span>
+        <h1 class="reveal reveal-up delay-1">Your Smile Deserves <br><span>The Best Care</span></h1>
+        <p class="lead reveal reveal-up delay-2">Led by Dr. Akshaya Narayanan, MDS, we provide advanced, clinically grounded, and family‑friendly dental care — focused on gentle treatments, clear guidance, and truly comfortable experiences that help every patient smile with confidence.</p>
+        <div class="hero-actions reveal reveal-up delay-3">
+          <a href="contact.html" class="btn btn-primary">Book an Appointment</a>
+          <a href="treatments.html" class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-faces-grid">
+        <div class="face-item reveal reveal-scale delay-1"><img src="assets/images/face-1.png" alt="Happy Patient"></div>
+        <div class="face-item reveal reveal-scale delay-2"><img src="assets/images/face-2.png" alt="Dental Patient"></div>
+        <div class="face-item reveal reveal-scale delay-3"><img src="assets/images/face-3.png" alt="Smiling Patient"></div>
+        <div class="face-item reveal reveal-scale delay-4"><img src="assets/images/face-4.jpg" alt="Happy Patient"></div>
+        <div class="face-item reveal reveal-scale delay-5"><img src="assets/images/face-5.jpg" alt="Dental Patient"></div>
+        
+        <div class="face-item reveal reveal-scale delay-2"><img src="assets/images/face-6.png" alt="Smiling Patient"></div>
+        <div class="face-item reveal reveal-scale delay-3"><img src="assets/images/face-7.jpg" alt="Happy Patient"></div>
+        <div class="face-item reveal reveal-scale delay-4"><img src="assets/images/face-8.jpg" alt="Smiling Patient"></div>
+        <div class="face-item reveal reveal-scale delay-5"><img src="assets/images/face-9.jpg" alt="Dental Patient"></div>
+        <div class="face-item reveal reveal-scale delay-6"><img src="assets/images/face-10.jpg" alt="Happy Patient"></div>
+        
+        <div class="stats-card">
+          <div class="stars">★★★★★</div>
+          <div>
+            <strong style="white-space: nowrap;">Consistently 5-Star Reviews</strong>
+            <div style="font-size: 0.8rem; color: var(--text-light)">Top-Rated on Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us - Editorial Redesign -->
+  <section class="why-choose-editorial">
+    <div class="container">
+      <div class="editorial-header text-center reveal">
+        <span class="section-eyebrow reveal reveal-down">The Sai Nivedhan Standard</span>
+        <h2 class="reveal reveal-up delay-1">Clinical Excellence. <br>Patient Tranquility.</h2>
+        <div class="editorial-divider reveal reveal-scale delay-2"></div>
+        <p class="lead reveal reveal-up delay-3">We combine advanced specialist qualifications with a refined approach to care, ensuring your dental journey is as comfortable as it is clinically precise.</p>
+      </div>
+
+      <div class="feature-strip">
+
+        <!-- Row 1 -->
+        <div class="feature-strip-row">
+          <div class="feature-strip-item reveal reveal-up delay-1">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+            </div>
+            <h4 class="fs-title">MDS Specialist</h4>
+            <p class="fs-desc">Postgraduate-trained, not a general dentist</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-2">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+            </div>
+            <h4 class="fs-title">Dual Specialisation</h4>
+            <p class="fs-desc">Expertise in both Periodontics and Implantology</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-3">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h4 class="fs-title">Pain-Free Care</h4>
+            <p class="fs-desc">Ultra-gentle techniques with effective anaesthesia</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-4">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h4 class="fs-title">Advanced Technology</h4>
+            <p class="fs-desc">Digital diagnostics and CAD/CAM workflows</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-5">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h4 class="fs-title">100% Sterilization</h4>
+            <p class="fs-desc">Hospital-grade protocols at every step</p>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="feature-strip-row">
+          <div class="feature-strip-item reveal reveal-up delay-1">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h4 class="fs-title">Clinic-Director Led</h4>
+            <p class="fs-desc">Dr. Akshaya personally directs every treatment plan and clinical decision</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-2">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h4 class="fs-title">Patient First Approach</h4>
+            <p class="fs-desc">Every decision explained clearly before proceeding</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-3">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h4 class="fs-title">Family & Senior Care</h4>
+            <p class="fs-desc">Expert, gentle care for all ages, including seniors with medical needs</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-4">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke-width="2"/></svg>
+            </div>
+            <h4 class="fs-title">Women-Led Clinic</h4>
+            <p class="fs-desc">Trusted by women and families across Chennai</p>
+          </div>
+          <div class="feature-strip-item reveal reveal-up delay-5">
+            <div class="fs-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h4 class="fs-title" style="white-space: nowrap;">Consistently 5-Star Reviews</h4>
+            <p class="fs-desc">Highly rated by families in Mogappair</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Philosophy -->
+  <section class="section">
+    <div class="container">
+      <div class="philosophy-container">
+        <div class="philosophy-image premium-image-wrap reveal reveal-left">
+          <img src="assets/images/dr-akshaya.jpg" alt="Dr. Akshaya Narayanan">
+        </div>
+        <div class="philosophy-content reveal reveal-right delay-2">
+          <span class="hero-badge" style="background: rgba(0,129,2,0.1); color: var(--primary-green);">Clinical Philosophy</span>
+          <h2>A Heart for Healing, <br>A Hand for Excellence</h2>
+          <p>At Sai Nivedhan Dental Care, we believe that dentistry is as much about the person as it is about the procedure. Every smile tells a story, and our mission is to ensure yours is healthy, confident, and bright.</p>
+          <div class="philosophy-quote">
+            "My goal is to provide specialized care that is clinically advanced yet deeply rooted in patient comfort and trust."
+          </div>
+          <p>As a specialist in Periodontics and Implantology, I am committed to staying at the forefront of dental science to bring my patients in Chennai the best possible outcomes.</p>
+          <p><strong>— Dr. Akshaya Narayanan, MDS</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Treatments Overview -->
+  <section class="section bg-soft">
+    <div class="container">
+      <div class="section-title text-center reveal reveal-up">
+        <span class="section-eyebrow">Our Specialized Care</span>
+        <h2>Comprehensive Treatments</h2>
+        <p class="lead">From routine checkups to advanced implantology, we offer complete dental care under one roof.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card featured reveal reveal-up delay-1">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2c-3.5 0-6 2.5-6 6 0 3.5 1.5 7 2.5 10 1 3 3.5 3.5 3.5 1.5.5 0 1 0 1.5 0 0 2 2.5 1.5 3.5-1.5 1-3 2.5-6.5 2.5-10 0-3.5-2.5-6-6-6Z" />
+              <path d="M12 8v7" stroke-dasharray="2 2" />
+              <circle cx="12" cy="8" r="4" opacity="0.3" />
+              <path d="M10 8h4M12 6v4" opacity="0.5" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <span class="editorial-stat">Specialized Care</span>
+            <h3>Advanced Root Canal Therapy</h3>
+            <p>Painless root canal treatments using advanced rotary endodontics and microscopic precision to save your natural teeth. Experience specialist-led care for complex cases.</p>
+            <a href="treatments.html" class="text-primary" style="font-weight: 600; font-size: 0.9rem; margin-top: 10px; display: inline-block;">View Treatment Details &rarr;</a>
+          </div>
+        </div>
+        
+        <div class="service-card reveal reveal-up delay-2">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 11v10M9 15h6M9 18h6" />
+              <path d="M18 11V8c0-3.5-2.5-6-6-6S6 4.5 6 8v3h12Z" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <span class="editorial-stat">Replacement</span>
+            <h3>Dental Implants</h3>
+            <p>Permanent, natural-looking replacement for missing teeth by an MDS Implantologist.</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal reveal-up delay-1">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2c-3.5 0-6 2.5-6 6 0 3.5 1.5 7 2.5 10 1 3 3.5 3.5 3.5 1.5.5 0 1 0 1.5 0 0 2 2.5 1.5 3.5-1.5 1-3 2.5-6.5 2.5-10 0-3.5-2.5-6-6-6Z" />
+              <path d="M4 14c2 1 4 1 6 0s4-1 6 0 4 1 6 0" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <span class="editorial-stat">Gum Health</span>
+            <h3>Periodontal Care</h3>
+            <p>Specialized treatment for gum diseases to ensure a strong foundation for your teeth.</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal reveal-up delay-2">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2c-3.5 0-6 2.5-6 6 0 3.5 1.5 7 2.5 10 1 3 3.5 3.5 3.5 1.5.5 0 1 0 1.5 0 0 2 2.5 1.5 3.5-1.5 1-3 2.5-6.5 2.5-10 0-3.5-2.5-6-6-6Z" />
+              <path d="M6 10h12M9 9v2M15 9v2" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <span class="editorial-stat">Orthodontics</span>
+            <h3>Braces & Aligners</h3>
+            <p>Straighten your smile with traditional braces or modern invisible aligners for all ages.</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal reveal-up delay-1">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2c-3.5 0-6 2.5-6 6 0 3.5 1.5 7 2.5 10 1 3 3.5 3.5 3.5 1.5.5 0 1 0 1.5 0 0 2 2.5 1.5 3.5-1.5 1-3 2.5-6.5 2.5-10 0-3.5-2.5-6-6-6Z" />
+              <path d="M18 4l.5 1.5L20 6l-1.5.5L18 8l-.5-1.5L16 6l1.5-.5z" fill="currentColor" stroke="none" />
+              <path d="M6 6l.5 1.5L8 8l-1.5.5L6 10l-.5-1.5L4 8l1.5-.5z" fill="currentColor" stroke="none" opacity="0.6" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <span class="editorial-stat">Cosmetic</span>
+            <h3>Teeth Whitening</h3>
+            <p>Professional whitening treatments to brighten your smile and remove stubborn stains safely.</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal reveal-up delay-2">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2c-3.5 0-6 2.5-6 6 0 3.5 1.5 7 2.5 10 1 3 3.5 3.5 3.5 1.5.5 0 1 0 1.5 0 0 2 2.5 1.5 3.5-1.5 1-3 2.5-6.5 2.5-10 0-3.5-2.5-6-6-6Z" />
+              <path d="M12 12l5-5M15 6h3v3" />
+              <circle cx="12" cy="12" r="1" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <span class="editorial-stat">Specialized</span>
+            <h3>Oral Surgery</h3>
+            <p>Safe wisdom tooth removals and minor surgical procedures performed with clinical precision.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top: 60px;">
+        <a href="treatments.html" class="btn btn-primary">View All Treatments</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smile Transformations -->
+  <section class="section" id="transformations">
+    <div class="container">
+      <div class="section-title text-center reveal reveal-up">
+        <span class="section-eyebrow">Clinical Excellence</span>
+        <h2>Smile Transformations</h2>
+        <p class="lead">Experience the life-changing results of specialized dental care through our interactive gallery.</p>
+      </div>
+      
+      <!-- Transformations Carousel Container -->
+      <div class="transformations-carousel-wrap reveal reveal-up delay-2">
+        <div class="swiper transformations-swiper">
+          <div class="swiper-wrapper">
+            
+            <!-- Case 1: Orthodontic Correction -->
+            <div class="swiper-slide">
+              <div class="comparison-card">
+                <div class="ba-slider">
+                  <img src="assets/images/Orthodontic Correction with Braces/2.png" alt="After Orthodontic Correction" class="after-img">
+                  <div class="ba-label ba-label-after">After</div>
+                  <div class="before-img-overlay">
+                    <img src="assets/images/Orthodontic Correction with Braces/1.png" alt="Before Orthodontic Correction">
+                    <div class="ba-label ba-label-before">Before</div>
+                  </div>
+                  <div class="slider-handle">
+                    <div class="handle-circle">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline><polyline points="5 18 11 12 5 6" transform="rotate(180 8 12)"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="comparison-info">
+                  <div class="case-tags">
+                    <span>Orthodontics</span>
+                    <span>Smile Alignment</span>
+                  </div>
+                  <h3>Orthodontic Correction</h3>
+                  <p class="patient-meta">- Precision Braces Treatment</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 2: Full Mouth Reconstruction -->
+            <div class="swiper-slide">
+              <div class="comparison-card">
+                <div class="ba-slider">
+                  <img src="assets/images/Full Mouth Reconstruction/2.png" alt="After Full Mouth Reconstruction" class="after-img">
+                  <div class="ba-label ba-label-after">After</div>
+                  <div class="before-img-overlay">
+                    <img src="assets/images/Full Mouth Reconstruction/1.png" alt="Before Full Mouth Reconstruction">
+                    <div class="ba-label ba-label-before">Before</div>
+                  </div>
+                  <div class="slider-handle">
+                    <div class="handle-circle">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline><polyline points="5 18 11 12 5 6" transform="rotate(180 8 12)"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="comparison-info">
+                  <div class="case-tags">
+                    <span>Rehabilitative</span>
+                    <span>Complex Care</span>
+                  </div>
+                  <h3>Full Mouth Reconstruction</h3>
+                  <p class="patient-meta">- Comprehensive Smile Overhaul</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 3: Single Tooth Implant -->
+            <div class="swiper-slide">
+              <div class="comparison-card">
+                <div class="ba-slider">
+                  <img src="assets/images/Single Tooth Implant Placement/2.png" alt="After Single Tooth Implant" class="after-img">
+                  <div class="ba-label ba-label-after">After</div>
+                  <div class="before-img-overlay">
+                    <img src="assets/images/Single Tooth Implant Placement/1.png" alt="Before Single Tooth Implant">
+                    <div class="ba-label ba-label-before">Before</div>
+                  </div>
+                  <div class="slider-handle">
+                    <div class="handle-circle">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline><polyline points="5 18 11 12 5 6" transform="rotate(180 8 12)"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="comparison-info">
+                  <div class="case-tags">
+                    <span>Implantology</span>
+                    <span>Permanent Fix</span>
+                  </div>
+                  <h3>Single Tooth Implant</h3>
+                  <p class="patient-meta">- Specialist Implant Placement</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 4: Midline Gap Closure -->
+            <div class="swiper-slide">
+              <div class="comparison-card">
+                <div class="ba-slider">
+                  <img src="assets/images/Midline Space Closure/2.png" alt="After Space Closure" class="after-img">
+                  <div class="ba-label ba-label-after">After</div>
+                  <div class="before-img-overlay">
+                    <img src="assets/images/Midline Space Closure/1.png" alt="Before Space Closure">
+                    <div class="ba-label ba-label-before">Before</div>
+                  </div>
+                  <div class="slider-handle">
+                    <div class="handle-circle">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline><polyline points="5 18 11 12 5 6" transform="rotate(180 8 12)"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="comparison-info">
+                  <div class="case-tags">
+                    <span>Cosmetic</span>
+                    <span>Aesthetic Bonding</span>
+                  </div>
+                  <h3>Midline Gap Closure</h3>
+                  <p class="patient-meta">- Non-Invasive Smile Enhancement</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 5: Broken Tooth Restoration -->
+            <div class="swiper-slide">
+              <div class="comparison-card">
+                <div class="ba-slider">
+                  <img src="assets/images/Broken Tooth Composite Restoration/2.png" alt="After Broken Tooth Restoration" class="after-img">
+                  <div class="ba-label ba-label-after">After</div>
+                  <div class="before-img-overlay">
+                    <img src="assets/images/Broken Tooth Composite Restoration/1.png" alt="Before Broken Tooth Restoration">
+                    <div class="ba-label ba-label-before">Before</div>
+                  </div>
+                  <div class="slider-handle">
+                    <div class="handle-circle">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline><polyline points="5 18 11 12 5 6" transform="rotate(180 8 12)"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="comparison-info">
+                  <div class="case-tags">
+                    <span>Emergency</span>
+                    <span>Composite Bonding</span>
+                  </div>
+                  <h3>Broken Tooth Restoration</h3>
+                  <p class="patient-meta">- Seamless Structural Repair</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 6: Missing Tooth Replacement -->
+            <div class="swiper-slide">
+              <div class="comparison-card">
+                <div class="ba-slider">
+                  <img src="assets/images/Missing Tooth Replacement/2.png" alt="After Missing Tooth Replacement" class="after-img">
+                  <div class="ba-label ba-label-after">After</div>
+                  <div class="before-img-overlay">
+                    <img src="assets/images/Missing Tooth Replacement/1.png" alt="Before Missing Tooth Replacement">
+                    <div class="ba-label ba-label-before">Before</div>
+                  </div>
+                  <div class="slider-handle">
+                    <div class="handle-circle">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline><polyline points="5 18 11 12 5 6" transform="rotate(180 8 12)"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="comparison-info">
+                  <div class="case-tags">
+                    <span>Prosthetic</span>
+                    <span>Functional Restoration</span>
+                  </div>
+                  <h3>Missing Tooth Replacement</h3>
+                  <p class="patient-meta">- High-Strength Aesthetic Bridge</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <!-- Swiper Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+        
+        <!-- Custom Navigation Buttons -->
+        <div class="carousel-nav">
+          <button class="nav-btn prev-btn" id="transform-prev">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+          <button class="nav-btn next-btn" id="transform-next">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-top: 60px;">
+        <a href="transformations.html" class="btn btn-primary">View All Results</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section bg-light" id="testimonials">
+    <div class="container">
+      <div class="section-title text-center">
+        <span class="section-eyebrow">Patient Stories</span>
+        <h2>Kind Words from Our Patients</h2>
+        <p class="lead" style="margin: 0 auto;">Experience the standard of care that has earned us a flawless 5-star reputation from families across Chennai.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        
+        <!-- Featured Testimonial -->
+        <div class="testimonial-card featured reveal">
+          <div class="quote-watermark">"</div>
+          <div class="testimonial-content">
+            <div class="stars-row">
+              <div class="stars">★★★★★</div>
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--primary-green); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 8px; display: block;">Featured Patient Story</span>
+            </div>
+            <p class="review-text">"I took my father, an octogenarian and chronic heart patient, to Dr. Akshaya for dental treatment. I also brought my mother, who is 76. Dr. Akshaya and her staff provided gentle care, demonstrated patience, and offered detailed explanations throughout the process, ensuring minimal pain. The clinic maintains a high level of professionalism and hygiene, supported by a dedicated staff member, Ms. Durga. She listens attentively and shows genuine care, making her patients feel valued. I give her a perfect score of 10/10."</p>
+          </div>
+          <div class="reviewer-row">
+            <div class="reviewer-avatar" style="width: 72px; height: 72px; font-size: 1.8rem; background: var(--primary-green);">R</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name" style="font-size: 1.4rem; color: var(--primary-green);">Ramji</div>
+              <div class="reviewer-meta" style="font-size: 0.95rem;">Senior Citizen Care</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Balanced 3-Column Grid -->
+        <div class="testimonial-card reveal delay-1">
+          <div class="quote-watermark">"</div>
+          <div class="stars-row">
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">"I went for wisdom tooth extraction of my mother in law aged 85 years, diabetic and a cancer patient. Utmost attention was given... She felt very comfortable with no pain. I give 100 percent recommendation."</p>
+          <div class="reviewer-row">
+            <div class="reviewer-avatar" style="background: rgba(242, 254, 19, 0.4); color: var(--charcoal);">N</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Neela. M</div>
+              <div class="reviewer-meta">Wisdom Tooth Care</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal delay-2">
+          <div class="quote-watermark">"</div>
+          <div class="stars-row">
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">"I went to Sai Nivedhan for cleaning then came to know that the doctor is a gum specialist. I was completely satisfied with her treatment. Doctor explained all instructions very patiently."</p>
+          <div class="reviewer-row">
+            <div class="reviewer-avatar" style="background: rgba(0, 129, 2, 0.1); color: var(--primary-green);">T</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Tamizh</div>
+              <div class="reviewer-meta">Gum Specialist Care</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal delay-3">
+          <div class="quote-watermark">"</div>
+          <div class="stars-row">
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">"Dr Akshaya is very courteous and explains the issues in detail... I never seen a doctor so patient to listen to our layman questions and always answers them in a reassuring manner."</p>
+          <div class="reviewer-row">
+            <div class="reviewer-avatar" style="background: var(--charcoal); color: white;">R</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Ravi A</div>
+              <div class="reviewer-meta">General Dental Care</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Balanced 2-Column Grid -->
+        <div class="testimonial-card wide reveal delay-1">
+          <div class="quote-watermark">"</div>
+          <div class="stars-row">
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="review-text">"I visited Sainivedhan Dental clinic for tooth pain. Dr Akshaya diagnosed it as dental frature. She sugggested removal of broken portion and root canal treatment... Dr Akshaya is extremely skilled calm and cares for her patients."</p>
+          <div class="reviewer-row">
+            <div class="reviewer-avatar" style="background: #f57c00; color: white;">G</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name">Giridharan R.</div>
+              <div class="reviewer-meta">Root Canal Care</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card wide reveal delay-2" style="background: var(--primary-green); border-color: var(--primary-green);">
+          <div class="quote-watermark" style="color: rgba(255,255,255,0.06);">"</div>
+          <div class="stars-row">
+            <div class="stars" style="color: var(--accent-yellow);">★★★★★</div>
+          </div>
+          <p class="review-text" style="color: white;">"Did a root canal procedure at Sai NIVEDHAN top tier service from start to finish the clinic is spotless and equipped with latest technology dr Akashaya is straight forward highly skilled and took time to explain every step of process ,ensuring I was comfortable and painfree thru out."</p>
+          <div class="reviewer-row">
+            <div class="reviewer-avatar" style="background: white; color: var(--primary-green);">V</div>
+            <div class="reviewer-info">
+              <div class="reviewer-name" style="color: white;">Vijayalakshmi Srikanth</div>
+              <div class="reviewer-meta" style="color: rgba(255,255,255,0.8);">Cosmetic Dentistry</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-soft">
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Common Questions</h2>
+        <p>Find quick answers to your most frequent dental concerns.</p>
+      </div>
+      <div class="faq-container">
+        <!-- Q1 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What makes Sai Nivedhan Dental Care different from other clinics?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Sai Nivedhan Dental Care is led by an MDS‑qualified Periodontist and Implantologist — a specialist trained extensively in gum health, implants, and complex restorative procedures. This means your treatments aren't just routine; they're planned and executed with advanced clinical expertise that general dentists are not formally trained for. Combined with modern technology, strict sterilization, and a patient‑first approach, the clinic delivers care that is both precise and comfortable. With a consistent track record of 5-star reviews, patients consistently highlight painless treatments, clear explanations, and a warm, family‑friendly environment.
+          </div>
+        </div>
+
+        <!-- Q4 -> Moved up as it's about the doctor -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Who will handle my case?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Your treatment is handled personally by Dr. Akshaya Narayanan, the lead doctor of the clinic. She doesn't delegate your care — she evaluates your condition herself, explains every step clearly, and ensures that each procedure is carried out with precision and calm, steady attention. Patients consistently appreciate that she takes the time to understand their concerns, works gently, and stays fully involved from diagnosis to follow‑up. When you visit, you're not passed from one dentist to another — Dr. Akshaya is the one guiding and overseeing your entire treatment journey.
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What can I expect in a single dental visit?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Many procedures — such as fillings, scaling, polishing, simple extractions, and some crowns — can be completed in a single visit. Treatments like root canals, implants, periodontal therapy, and full‑mouth rehabilitation may require multiple visits depending on complexity. Digital tools like intraoral cameras and CAD/CAM workflows help speed up diagnosis and reduce the number of appointments needed.
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What kinds of complex procedures do you handle?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            The clinic has handled several advanced cases, including: full mouth rehabilitation with implants, complex wisdom tooth surgeries, advanced periodontal treatments, multi‑tooth implant placements, and restorations for severely damaged or missing teeth. These cases are managed with careful planning, modern technology, and specialist expertise.
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How do I know if I need to see a periodontist?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            You may need a periodontist if you're noticing signs that your gums or supporting bone need specialist attention — things like bleeding while brushing, persistent bad breath, gum recession, loose teeth, or gaps forming between teeth. If you've been advised to consider implants, or if your gum issues keep returning despite regular cleanings, a specialist evaluation can give you a clearer picture of what's happening beneath the surface. A periodontist focuses specifically on the foundation that holds your teeth in place, so seeing one early can help prevent small concerns from becoming bigger problems.
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Are dental implants safe? How long do they last?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Dental implants are considered one of the safest and most predictable treatments in modern dentistry. They're made from biocompatible materials that integrate naturally with your bone, and when placed with proper planning and sterilization, the procedure is very safe. As for longevity, implants are designed to last many years — often decades — as long as the surrounding gums and bone stay healthy.
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Does getting a dental implant hurt?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            The procedure itself is done under local anaesthesia, so you won't feel pain during the placement — most patients are surprised by how comfortable it is. What some people experience afterward is mild soreness, slight swelling, or tenderness around the area for a few days, which is normal healing and manageable with standard pain relief. The idea that implant surgery is intensely painful is largely a fear built on outdated experiences. With modern techniques and proper anaesthesia, it's typically no more uncomfortable than a tooth extraction. We will also give you clear post-procedure instructions so recovery is as smooth as possible.
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What are CAD/CAM Zirconia crowns, and why are they better?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            A crown is a cap that covers a damaged or weakened tooth to restore its shape, strength, and appearance. Traditionally, crowns were made by sending impressions to an external lab, which meant waiting days or even weeks for the final result — and sometimes dealing with poorly fitting crowns that needed adjustments. CAD/CAM (Computer-Aided Design / Computer-Aided Manufacturing) changes that entirely. A digital scan of your tooth is taken — no messy impression putty — and a computer precisely designs the crown to match the exact dimensions of your tooth. It's then milled from a solid block of Zirconia, which is a high-strength ceramic material.<br><br>Why does that matter to you? Zirconia crowns are tooth-coloured and look completely natural. They're extremely strong — resistant to chipping and cracking — and are metal-free, which means no dark lines at the gum, no allergic reactions, and no long-term discolouration. Because the fit is digitally precise, they last significantly longer than conventionally made crowns and require fewer adjustments. For front teeth, the aesthetics are excellent. For back teeth, the strength is unmatched.
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>I'm scared of dental procedures. Is that normal?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Completely normal — dental anxiety is one of the most common reasons people delay treatment, and it's something the clinic takes seriously. Dr. Akshaya takes a calm, unhurried approach: explaining what's about to happen before doing it, checking in during the procedure, and never rushing through a step. Most patients who come in nervous leave saying the experience was far gentler than they expected. If you have a low pain threshold or a specific fear, just mention it at the start — the team will adjust the pace and technique accordingly.
+          </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>My child needs dental treatment. Do you see children?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Yes. The clinic sees patients across all age groups, including children. Early dental visits are actually important — they help catch issues like misaligned teeth, decay, or crowding before they become harder to correct. Children are treated gently and patiently, and the clinic's calm, friendly environment helps first-time young visitors feel at ease rather than anxious.
+          </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How often should I visit the dentist even if nothing seems wrong?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Twice a year is the general recommendation — once every six months. Most dental problems, including cavities, gum disease, and early-stage bone loss, don't cause pain or visible symptoms until they've progressed significantly. A routine check-up and cleaning every six months allows the doctor to catch and address issues early, when treatment is simpler, less invasive, and less expensive. Think of it less as fixing a problem and more as preventing one from forming.
+          </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>My gums bleed when I brush. Is that serious?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Bleeding gums are not normal, even if it happens occasionally. It's usually the earliest sign of gingivitis — inflammation caused by plaque buildup along the gum line. At this stage, it's entirely reversible with a professional cleaning and improved brushing technique. However, if left unaddressed, gingivitis can progress into periodontitis — a deeper infection that affects the bone supporting your teeth. That's significantly harder to treat and can eventually lead to tooth loss. The reassuring part is that if you're catching it at the bleeding stage, you're catching it early. A visit now is far simpler than waiting until the symptoms get worse.
+          </div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What is periodontal treatment, and will I need surgery?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Periodontal treatment addresses disease affecting the gums and the bone that supports your teeth. The approach depends entirely on how far the disease has progressed. In early to moderate cases, a non-surgical procedure called scaling and root planing is used — a deep cleaning that removes bacterial deposits from below the gum line and smooths the root surfaces so the gums can reattach properly. Most patients respond well to this and don't need anything further. Surgery is considered only when pockets between the gums and teeth are too deep to clean non-surgically, or when bone loss needs to be addressed directly. Even then, periodontal surgery today is far less involved than it once was, and recovery is generally manageable. Whether or not surgery is needed, Dr. Akshaya will explain exactly what's happening in your mouth and what the least invasive path forward looks like.
+          </div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I get all my dental work done in one place?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            The clinic handles a wide range of treatments under one roof — from routine cleanings and fillings to implants, periodontal surgery, root canals, cosmetic work, orthodontics, and complex restorations. The intention is to be a complete dental home so that patients aren't bounced between multiple clinics for different procedures. In the rare instance that a case requires a subspecialist outside the clinic's scope, you'll be informed clearly and referred appropriately — but for the vast majority of dental needs, everything can be managed here.
+          </div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How long does a root canal take, and will it hurt?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            A root canal has a reputation that far exceeds its actual discomfort. The procedure is done under local anaesthesia, and most patients feel nothing beyond a mild pressure sensation. The goal of a root canal is actually to relieve pain — the tooth being treated is often already causing significant discomfort due to infection, so the procedure brings relief, not the other way around. In terms of time, a straightforward single-rooted tooth can be completed in one visit of about 45 to 60 minutes. Multi-rooted teeth or more complex cases may be split across two visits. Afterward, the tooth is usually capped with a crown to protect it long-term. Modern rotary instruments and digital imaging have made the entire process faster, more predictable, and far more comfortable than what people typically imagine.
+          </div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Are braces the only option for crooked teeth?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Traditional metal braces are effective, but they're not the only route. Clear aligners — like Invisalign or similar systems — are a popular alternative for adults and older teenagers who want to straighten their teeth without visible brackets and wires. They're removable, so eating and cleaning your teeth remains normal, and they're nearly invisible in day-to-day life. For very minor crowding or spacing issues, cosmetic options like veneers or bonding can sometimes achieve the appearance of straighter teeth without any orthodontic movement at all. The right choice depends on the complexity of your case, your lifestyle, and your preference. We will assess your bite and alignment and walk you through which options are genuinely suitable for your situation — not just what's trending.
+          </div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>I've been told I need a tooth extraction. Can it be replaced?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Yes — and planning the replacement before the extraction is actually the smarter approach. When a tooth is removed, the bone beneath it begins to shrink over time because there's no longer a root stimulating it. If you wait too long before getting an implant or other replacement, that bone loss can complicate or increase the cost of future treatment. The most natural and durable replacement is a dental implant — a titanium root placed into the jaw with a crown on top. It looks, feels, and functions like a real tooth. Other options include a fixed bridge (which anchors to adjacent teeth) or a removable partial denture. Each has its trade-offs in terms of longevity, cost, and impact on surrounding teeth. At your consultation, the options will be laid out clearly so you can make an informed decision before proceeding with the extraction.
+          </div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How do I know if my child needs braces?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Parents often notice crowding or crooked teeth, but there are subtler signs worth watching too — difficulty chewing, mouth breathing, thumb sucking beyond age five, early or late loss of baby teeth, or jaws that shift when your child bites down. An orthodontic evaluation is typically recommended around age seven, not because treatment necessarily starts then, but because that's when a specialist can identify how the adult teeth are coming in and whether early guidance would prevent more complex treatment later. Catching issues early often means shorter, simpler treatment down the line.
+          </div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What's the difference between scaling and a regular cleaning?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            A regular cleaning — what's done during a routine check-up — removes plaque and surface stains from above the gum line. It's preventive and should ideally be done every six months. Scaling goes deeper. It removes hardened tartar (calcified deposits that regular brushing can't touch) from both above and below the gum line. If your gums are inflamed, bleeding, or if it's been a while since your last dental visit, scaling is typically needed before the gums can return to a healthy state. It's not painful — a mild sensitivity or tickling sensation is what most people experience. For patients with early gum disease, it's often the only treatment needed to bring things back under control.
+          </div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Is teeth whitening safe, and how long does it last?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            Professional teeth whitening done at a dental clinic is safe when performed correctly. The whitening agent used is a controlled concentration of hydrogen peroxide or carbamide peroxide, applied carefully to avoid contact with the gums. Some people experience temporary sensitivity for a day or two afterward, which fades on its own. How long it lasts depends on lifestyle — coffee, tea, red wine, and tobacco are the main culprits that cause staining to return. On average, professional whitening lasts anywhere from one to three years with normal habits. Touch-ups can be done periodically to maintain the result. It's worth noting that whitening works on natural teeth only — it won't change the colour of crowns, veneers, or fillings, so those would need to be factored in if you're planning both whitening and restorative work.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready for a Brighter Smile?</h2>
+      <p>Schedule your consultation with Dr. Akshaya Narayanan today.</p>
+      <a href="contact.html" class="btn btn-accent">Call 08056107507 Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+            <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: Info -->
+        <div class="footer-col">
+          <img src="assets/images/Footer_Logo_No_BG (Claude).png" alt="Sai Nivedhan Dental Care" class="footer-logo">
+          <p class="footer-bio">Women-owned specialty dental clinic in Mogappair West, Chennai. Led by Dr. Akshaya Narayanan &mdash; MDS Periodontist &amp; Implantologist &mdash; and trusted by hundreds of families across Chennai.</p>
+          
+          <div class="google-review-badge">
+            <div class="google-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="google-rating">
+              5 
+              <span class="google-logo-wrapper">
+                <svg viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"/>
+                </svg>
+              </span>
+              <span class="google-count" style="white-space: nowrap;">Consistently 5-Star Reviews on Google</span>
+            </div>
+          </div>
+
+          <div class="footer-social">
+            <a href="#" class="social-icon social-fb" title="Facebook">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+            </a>
+            <a href="#" class="social-icon social-ig" title="Instagram">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.057-2.148.258-2.911.555-.787.306-1.455.717-2.119 1.381-.664.664-1.075 1.332-1.381 2.119-.297.763-.498 1.634-.555 2.911-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.057 1.277.258 2.148.555 2.911.306.787.717 1.455 1.381 2.119.664.664 1.332 1.075 2.119 1.381.763.297 1.634.498 2.911.555 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.277-.057 2.148-.258 2.911-.555.787-.306 1.455-.717 2.119-1.381.664-.664 1.075-1.332 1.381-2.119.297-.763.498-1.634.555-2.911.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.057-1.277-.258-2.148-.555-2.911-.306-.787-.717-1.455-1.381-2.119-.664-.664-1.332-1.075-2.119-1.381-.763-.297-1.634-.498-2.911-.555-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.441s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.441-1.441-1.441z"/></svg>
+            </a>
+            <a href="#" class="social-icon social-yt" title="YouTube">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77.42-1.56.42-4.81.42-4.81s0-3.25-.42-4.81zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>
+            </a>
+            <a href="#" class="social-icon social-li" title="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Dr. Akshaya</a></li>
+            <li><a href="treatments.html">Our Services</a></li>
+            <li><a href="transformations.html">Transformations</a></li>
+            <li><a href="index.html#testimonials">Patient Reviews</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html" style="font-weight: 600; color: var(--primary-green);">Book Appointment</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Our Services -->
+        <div class="footer-col">
+          <h3>Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="treatments.html">Root Canal Treatment</a></li>
+            <li><a href="treatments.html">Dental Implants</a></li>
+            <li><a href="treatments.html">Crown Fixing</a></li>
+            <li><a href="treatments.html">Periodontal Care</a></li>
+            <li><a href="treatments.html">Wisdom Tooth Extraction</a></li>
+            <li><a href="treatments.html">Scaling & Polishing</a></li>
+            <li><a href="treatments.html">Pediatric Dentistry</a></li>
+            <li><a href="treatments.html">Laser Dentistry</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer-col">
+          <h3>Get In Touch</h3>
+          <ul class="footer-contact">
+            <li><i><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg></i><span>08056107507</span></li>
+            <li><i><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#25D366"/></svg></i><span>WhatsApp Us</span></li>
+            <li><i><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg></i><span>info@sainivedhandentalcare.com</span></li>
+            <li><i><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg></i><span>First floor, 4/745A, Bus stand road, Mogappair West, Chennai - 600037 <br><a href="#" style="color: var(--primary-green); font-size: 0.85rem;">View on Google Maps &rarr;</a></span></li>
+            <li><i><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/></svg></i><span>Mon &ndash; Sat: 10:00 AM &ndash; 7:30 PM <br><span style="font-size: 0.85rem; color: #888;">Sunday: By appointment only</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Sai Nivedhan Dental Care. All rights reserved.</span>
+        <span>Crafted with care in Chennai</span>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
